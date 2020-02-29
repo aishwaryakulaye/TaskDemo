@@ -8,7 +8,7 @@ public class Users
     public String user;
 
     @SerializedName("id")
-    public String id;
+    public int id;
 
     @SerializedName("avatar_url")
     public String avatar_url;

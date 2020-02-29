@@ -1,5 +1,7 @@
 package networkhit;
 
+import com.google.gson.GsonBuilder;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -11,7 +13,7 @@ public class APIClass
 
     private static String URL = "https://api.github.com";
 
-    static Retrofit getClient()
+    public static Retrofit getClient()
     {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

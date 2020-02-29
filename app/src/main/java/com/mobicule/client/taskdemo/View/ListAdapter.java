@@ -8,14 +8,20 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.mobicule.client.taskdemo.Model.Users;
 import com.mobicule.client.taskdemo.R;
+
+import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
 {
     Context context;
-    public ListAdapter(Context context)
+    List<Users> userListData;
+    public ListAdapter(Context context, List<Users> userListData)
     {
         this.context = context;
+        this.userListData = userListData;
     }
 
     @Override
@@ -29,13 +35,18 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
     }
 
     @Override
-    public void onBindViewHolder(ListAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(ListAdapter.ViewHolder holder, int position)
+    {
+        holder.txtLogin.setText(userListData.get(position).user);
+        holder.txtId.setText(userListData.get(position).id+"");
+        Glide.with(context).load(userListData.get(position).avatar_url).into(holder.imgUser);
+
 
     }
 
     @Override
     public int getItemCount() {
-        return 1;
+        return userListData.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
